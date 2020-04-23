@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ECG Monitor - обработка и анализ ЭКГ</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+  <h1>Загрузите сигнал в виде изображения или файла</h1>
+  <form>
+    <input type="file" id="ecgFile">
+    <input type="submit" id="loadBtn" value="Загрузить">
+  </form>
+  <script>
+    let fs = require('fs');
+    let ecgInput = document.getElementById('ecgFile');
+    let loadBtn = document.getElementById('loadBtn');
+    loadBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      let ecgPath = ecgInput.files[0].path;
+      let fl = fs.readFileSync(ecgPath);
+      console.log(fl);
+    });
+  </script>
+  </body>
+</html>
